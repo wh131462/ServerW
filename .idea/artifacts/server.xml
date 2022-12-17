@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="server">
+    <output-path>$PROJECT_DIR$/out/artifacts/server</output-path>
+    <root id="archive" name="server.jar">
+      <element id="library" level="project" name="Gradle: org.apiguardian:apiguardian-api:1.1.2" />
+      <element id="library" level="project" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.8.1" />
+      <element id="library" level="project" name="Gradle: org.junit.jupiter:junit-jupiter-engine:5.8.1" />
+      <element id="library" level="project" name="Gradle: org.junit.platform:junit-platform-commons:1.8.1" />
+      <element id="library" level="project" name="Gradle: org.junit.platform:junit-platform-engine:1.8.1" />
+      <element id="library" level="project" name="Gradle: org.opentest4j:opentest4j:1.2.0" />
+    </root>
+  </artifact>
+</component>

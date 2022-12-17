@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.wh131462.Server'
+    }
+}
+
+group 'com.wh131462'
+version '1.0.0'
+sourceCompatibility = 17 //基于jdk17
+targetCompatibility = 17
+repositories {
+    //引入国内源
+    maven{url 'https://maven.aliyun.com/nexus/content/groups/public'}
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation group:'org.springframework.boot',name:'spring-boot-starter-web',version:'2.4.3'
+}
+
+test {
+    useJUnitPlatform()
+}
