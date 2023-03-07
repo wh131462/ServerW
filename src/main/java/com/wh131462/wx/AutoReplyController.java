@@ -1,14 +1,35 @@
 package com.wh131462.wx;
 import com.wh131462.utils.LunarUtils;
+import com.wh131462.wx.utils.auth.WechatAuth;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 @RestController
 public class AutoReplyController {
+    /**
+     * 微信开发者的初始化校验
+     * @param signature
+     * @param timestamp
+     * @param nonce
+     * @param echostr
+     * @return
+     */
+    @GetMapping("/wx/initAuth")
+    public String verify(@RequestParam(name = "signature") String signature,
+                         @RequestParam(name = "timestamp") String timestamp,
+                         @RequestParam(name = "nonce") String nonce,
+                         @RequestParam(name = "echostr") String echostr) {
+        if (WechatAuth.validate(signature, timestamp, nonce)) {
+            // 如果校验成功，则返回echostr，表示接入成功
+            return echostr;
+        } else {
+            // 如果校验失败，则返回空字符串
+            return "";
+        }
+    }
+
     @PostMapping("/wx/today")
     public ResponseEntity<String> handlePostRequest(@RequestBody String requestBody) {
         LunarUtils lunar=new LunarUtils();
