@@ -1,10 +1,14 @@
 package com.wh131462.common;
 
 
+import com.wh131462.utils.DateUtil;
+
+import java.util.Date;
+
 public class WwException extends Exception{
     private String message;
     public WwException(String message){
-        String time= "";
+        String time= DateUtil.getFormattedTime("","");
         String template = """
             Error: {0} from WwException at {1}
         """;
