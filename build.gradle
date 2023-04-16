@@ -8,6 +8,14 @@ dependencies {
     implementation('commons-io:commons-io:2.11.0')
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // jOOQ依赖
+    implementation 'org.jooq:jooq:3.14.8'
+    implementation 'org.jooq:jooq-meta:3.14.8'
+    implementation 'org.jooq:jooq-codegen:3.14.8'
+
+    // MySQL驱动程序依赖
+    runtimeOnly 'mysql:mysql-connector-java:8.0.28'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3.1'
 }
 
 java {
@@ -30,9 +38,6 @@ version '1.0.0'
 repositories {
     mavenCentral()
 }
-
-
-
 compileJava {
     options.compilerArgs << '--release' << '19'
 }
