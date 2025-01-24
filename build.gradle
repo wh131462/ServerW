@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+ext {
+    springGrpcVersion = "0.3.0"
+}
+
+group = 'org.eternalheart'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '17' // 设置 Java 版本
+java {
+    sourceCompatibility = sourceCompatibility // 根据项目使用的 JDK 版本
+    targetCompatibility = sourceCompatibility
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starter
+    implementation 'org.springframework.boot:spring-boot-starter'
+    // Spring Boot MongoDB Starter
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    // Spring Boot Elasticsearch Starter 暂时无法启用es 资源太少
+//    implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+    // Web Starter (包含 Spring MVC)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.grpc:spring-grpc-spring-boot-starter'
+    implementation 'org.springframework.session:spring-session-core'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-graphql'
+    implementation 'com.netflix.graphql.dgs.codegen:graphql-dgs-codegen-gradle:7.0.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind' // 如果需要 JSON 解析
+    implementation 'org.jooq:jooq:3.18.0' // 核心库
+    implementation 'org.jooq:jooq-meta:3.18.0' // 代码生成工具
+    implementation 'org.jooq:jooq-codegen:3.18.0' // 代码生成器
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.springframework.graphql:spring-graphql-test'
+    testImplementation 'org.springframework:spring-webflux'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.grpc:spring-grpc-dependencies:$springGrpcVersion"
+    }
+}

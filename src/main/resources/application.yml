@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wechat-integration
+  # MongoDB 配置
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/eternalheart  # MongoDB 地址
+      database: eternalheart                      # 默认数据库
+  # 禁用默认的数据库
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+  # Elasticsearch 配置 要求4h8g
+#  elasticsearch:
+#    rest:
+#      uris: http://localhost:9200               # Elasticsearch 地址
+#      connection-timeout: 5000                  # 连接超时
+#      read-timeout: 30000                       # 读取超时
